@@ -23,4 +23,4 @@ ENV PORT=8000
 EXPOSE $PORT
 
 # Run the server using python directly so it picks up the PORT env var logic
-CMD ["python", "server.py"]
+CMD ["python", "web_search_mcp_server/server.py"]
