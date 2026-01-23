@@ -6,6 +6,7 @@ from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
 # Configure logger
 logger = logging.getLogger(__name__)
+threshold = 10000
 
 def flatten_markdown_links(text):
     """
@@ -50,7 +51,11 @@ async def perform_crawl(url: str) -> str:
         if result.success:
             logger.info("Crawl success! Processing markdown...")
             raw_markdown = result.markdown
+            if len(raw_markdown) > 10000:
+                logger.info(f"Size of the page is too big, return only first {threshold} characters")
+                raw_markdown = raw_markdown[:threshold]
             clean_text = flatten_markdown_links(raw_markdown)
+
             logger.info(f"Returning {len(clean_text)} chars of text")
             return clean_text
         else:

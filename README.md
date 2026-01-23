@@ -13,7 +13,7 @@ A Docker-ready MCP server with **SearXNG** (privacy-focused search aggregator) +
 
 ### 2. Smart Web Crawler (`crawl_url`)
 - **Headless Browsing**: `crawl4ai` (Playwright) for JS-heavy sites.
-- **Content Pruning**: Dynamic filter (threshold 0.48).
+- **Content Pruning**: Dynamic filter (threshold 0.48). Returns only first 10000 characters of the web page to reduce context window.
 - **Markdown**: Structured output with link flattening.
 
 ## Quick Start

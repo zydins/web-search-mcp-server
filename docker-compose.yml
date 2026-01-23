@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   searxng:
     image: searxng/searxng:latest
@@ -9,6 +8,11 @@ services:
       - ./searxng-settings.yml:/etc/searxng/settings.yml:ro
     environment:
       - SEARXNG_BASE_URL=http://localhost:8080/
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512m
     restart: unless-stopped
 
   web-search-mcp:
